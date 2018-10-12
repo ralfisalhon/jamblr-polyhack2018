@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image, View, StyleSheet } from "react-native";
+import { Image, View, StyleSheet, StatusBar } from "react-native";
 import {
     Container,
     Header,
@@ -12,9 +12,6 @@ import {
     Icon,
     Thumbnail,
     Text,
-    Left,
-    Right,
-    Body
 } from "native-base";
 
 var images = [
@@ -23,11 +20,6 @@ var images = [
     require('./assets/swiper-3.png'),
     require('./assets/swiper-4.png')
 ];
-
-// const cardOne   = require('/assets/swiper-1.png');
-// const cardTwo   = require('/assets/swiper-2.png');
-// const cardThree = require('/assets/swiper-3.png');
-// const cardFour  = require('/assets/swiper-4.png');
 
 const cards = [
     {
@@ -55,26 +47,32 @@ const cards = [
 class SimpleDeck extends Component {
     render() {
         return (
-            <View>
+            <View style = {styles.container}>
+                <View style = {styles.headerContainer}>
+                <StatusBar barStyle= "light-content" />
+                    <View style = {{height: 16}}></View>
+                        <Text style = {styles.name}>
+                            Music Swiper
+                        </Text>
+                </View>
+                <View style = {styles.deckSwiper}>
                 <DeckSwiper
                 dataSource={cards}
                 looping={false}
                 renderEmpty={() =>
-                    <View>
-                        <Text>Over</Text>
+                    <View style = {styles.end}>
+                        <Text>End of cards</Text>
                     </View>}
                 renderItem={item =>
                     <Card style={{ elevation: 3 }}>
                     <CardItem>
-                    <Left>
                     <Thumbnail source={item.image} />
-                    <Body>
-                    <Text>
-                    {item.text}
-                    </Text>
-                    <Text note>NativeBase</Text>
-                    </Body>
-                    </Left>
+                    <View>
+                        <Text>
+                        {item.text}
+                        </Text>
+                        <Text note>NativeBase</Text>
+                    </View>
                     </CardItem>
                     <CardItem cardBody>
                     <Image
@@ -94,29 +92,35 @@ class SimpleDeck extends Component {
                     </Text>
                     </CardItem>
                     </Card>}/>
+                    </View>
                 </View>
                 );
             }
         }
 
-        export default SimpleDeck;
+export default SimpleDeck;
 
-
-        const styles = StyleSheet.create({
-            container: {
-                flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: '#F5FCFF',
-            },
-            welcome: {
-                fontSize: 20,
-                textAlign: 'center',
-                margin: 10,
-            },
-            instructions: {
-                textAlign: 'center',
-                color: '#333333',
-                marginBottom: 5,
-            },
-        });
+const styles = StyleSheet.create({
+    container: {
+        justifyContent: 'center',
+    },
+    end: {
+        marginTop: 50,
+        alignItems: 'center',
+    },
+    headerContainer: {
+        height: 65,
+        backgroundColor: 'black',
+        borderBottomWidth: 0,
+        borderColor: 'gray',
+        justifyContent: 'center',
+    },
+    name: {
+        textAlign: 'center',
+        fontSize: 24,
+        color: 'white',
+    },
+    deckSwiper: {
+        margin: 10,
+    }
+});
