@@ -102,7 +102,8 @@ export default SimpleDeck;
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center',
+        flex: 1,
+        backgroundColor: '#2980b9',
     },
     end: {
         marginTop: 50,
@@ -110,9 +111,8 @@ const styles = StyleSheet.create({
     },
     headerContainer: {
         height: 65,
-        backgroundColor: 'black',
+        backgroundColor: '#3498db',
         borderBottomWidth: 0,
-        borderColor: 'gray',
         justifyContent: 'center',
     },
     name: {
