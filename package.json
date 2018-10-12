@@ -1,0 +1,10 @@
+{
+	"name": "music-swipe",
+	"version": "0.0.1",
+	"dependencies": {
+		"body-parser": "latest",
+		"express": "latest",
+		"path": "latest",
+		"validator": "latest"
+	}
+}
