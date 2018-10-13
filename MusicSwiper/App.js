@@ -76,6 +76,9 @@ class SimpleDeck extends Component {
             tab1: true,
             tab2: false,
         };
+
+        this.state = {spotifyInitialized: false};
+        // this.spotifyLoginButtonWasPressed();
     }
     toggleTab1() {
         this.setState({
@@ -89,6 +92,66 @@ class SimpleDeck extends Component {
             tab2: true,
         });
     }
+
+    componentDidMount()
+	{
+		// initialize Spotify if it hasn't been initialized yet
+		if(!Spotify.isInitialized())
+		{
+			// initialize spotify
+			var spotifyOptions = {
+				"clientID":"67d0b41ce73546b0a57762f74017f107",
+				"sessionUserDefaultsKey":"SpotifySession",
+				"redirectURL":"http://music-swipe.herokuapp.com/",
+				"scopes":["user-read-private", "playlist-read", "playlist-read-private", "streaming"],
+			};
+			Spotify.initialize(spotifyOptions).then((loggedIn) => {
+				// update UI state
+				this.setState({spotifyInitialized: true});
+				// handle initialization
+				if(loggedIn)
+				{
+					Alert.alert("Logged in to Spotify");
+				}
+			}).catch((error) => {
+				Alert.alert("Error", error.message);
+			});
+
+            // this.spotifyLoginButtonWasPressed();
+		}
+		else
+		{
+			// update UI state
+			this.setState((state) => {
+				state.spotifyInitialized = true;
+				return state;
+			});
+			// handle logged in
+			if(Spotify.isLoggedIn())
+			{
+				Alert.alert("Logged in to Spotify");
+			}
+		}
+	}
+
+    spotifyLoginButtonWasPressed()
+	{
+		// log into Spotify
+		Spotify.login().then((loggedIn) => {
+			if(loggedIn)
+			{
+				// logged in
+				Alert.alert("Logged in!");
+			}
+			else
+			{
+				// cancelled
+			}
+		}).catch((error) => {
+			// error
+			Alert.alert("Error", error.message);
+		});
+	}
 
     render() {
         return (
