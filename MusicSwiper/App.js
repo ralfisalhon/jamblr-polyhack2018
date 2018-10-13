@@ -478,10 +478,11 @@ class SimpleDeck extends Component {
                                 <View style = {styles.container2}>
                                     <View style = {styles.header}>
                                     <StatusBar barStyle= "light-content" />
-                                        <View style = {{height: 20}}></View>
-                                            <Text style = {styles.name}>
-                                                Jamblr
-                                            </Text>
+                                        <View style = {{height: 25}}></View>
+                                        <Image
+                                        style = {styles.image2}
+                                        source={{uri: "https://puu.sh/BKpe6/100d09c952.png"}}
+                                        />
                                     </View>
                                     <View style = {styles.deckSwiper}>
                                         <DeckSwiper
@@ -500,7 +501,7 @@ class SimpleDeck extends Component {
                                                 <Text>End of cards</Text>
                                             </View>}
                                         renderItem={item =>
-                                            <View style = {{backgroundColor: 'white', borderRadius: 25, margin: 5}}>
+                                            <View style = {{backgroundColor: 'white', borderRadius: 25, margin: 5, marginTop: -125, borderWidth: 2, borderColor: 'white'}}>
                                             <View style = {{flexDirection: 'row', margin: 10}}>
                                                 <Thumbnail source={{uri: item.image}} />
                                                 <View style = {{marginLeft: 10, marginRight: 50, marginTop: 10}}>
@@ -620,10 +621,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     header: {
-        height: 65,
+        height: 200,
         backgroundColor: '#0086ff',
         borderBottomWidth: 0,
-        justifyContent: 'center',
+        alignItems: 'center',
         borderBottomLeftRadius: 15,
         borderBottomRightRadius: 15,
     },
@@ -642,5 +643,10 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 425,
         borderRadius: 25,
+    },
+    image2: {
+        resizeMode: "cover",
+        height: 45,
+        width: 30,
     }
 });
