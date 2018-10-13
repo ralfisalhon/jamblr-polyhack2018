@@ -18,6 +18,7 @@ import {
 } from "native-base";
 
 global.globalData = "";
+global.globalUserID = "";
 
 console.disableYellowBox = true;
 
@@ -55,6 +56,7 @@ class SimpleDeck extends Component {
         };
 
         this.rights = [];
+        this.rightsTotal = [];
 
         global.globalCurrently = 0;
 
@@ -158,12 +160,13 @@ class SimpleDeck extends Component {
         });
 
         Spotify.getMe().then((result) => {
-            // Alert.alert("display_name", result.display_name)
+            // Alert.alert("id", result.id);
+            globalUserID = result.id;
+            console.log("accessToken", Spotify.getAuth().accessToken);
+            console.log("user_id", globalUserID);
 		}).catch((error) => {
 			Alert.alert("Error", error.message);
 		});
-
-        console.log("accessToken", Spotify.getAuth().accessToken);
 
         this.getSongsFromGenres(["pop", "alternative", "rap", "metal", "jazz"], Spotify.getAuth().accessToken)
 	}
@@ -275,7 +278,7 @@ class SimpleDeck extends Component {
 				"clientID":"67d0b41ce73546b0a57762f74017f107",
 				"sessionUserDefaultsKey":"SpotifySession",
 				"redirectURL":"http://music-swipe.herokuapp.com/",
-				"scopes":["user-read-private", "playlist-read", "playlist-read-private", "streaming", "user-library-modify", "user-library-read"],
+				"scopes":["user-read-private", "playlist-read", "playlist-read-private", "streaming", "user-library-modify", "user-library-read", "playlist-modify-public", "playlist-modify-private"],
 			};
 			Spotify.initialize(spotifyOptions).then((loggedIn) => {
 				// update UI state
@@ -330,10 +333,13 @@ class SimpleDeck extends Component {
 
     swiped(direction)
     {
-        // Alert.alert(this.rights.length.toString());
+        // if (direction == "right") {
+        //     Alert.alert(this.state.cards[globalCurrently-1].name);
+        // }
 
         if(direction == "right") {
-            this.rights.push(this.state.cards[globalCurrently]);
+            this.rights.push(this.state.cards[globalCurrently-1]);
+            this.rightsTotal.push(this.state.cards[globalCurrently-1]);
         }
 
         // Spotify.playURI(this.state.cards[globalCurrently].uri, 0, 0);
@@ -374,6 +380,76 @@ class SimpleDeck extends Component {
         });
 
         TrackPlayer.play();
+    }
+
+    exportPressed()
+    {
+        this.createAndPopulatePlaylist(globalUserID, Spotify.getAuth().accessToken);
+    }
+
+    createAndPopulatePlaylist = async (user_id, access_token) => {
+        console.log("createAndPopulatePlaylist called");
+        var xhr = new XMLHttpRequest();
+
+        var date = new Date();
+        var name = date.toString();
+
+        xhr.onreadystatechange = (e) => {
+            // console.log("State changed", xhr.status.toString());
+            if (xhr.readyState !== 4) {
+                return;
+            }
+            if (xhr.readyState == 4 && xhr.status == 201) {
+                console.log("MADE IT HERE");
+                Alert.alert("Playlist created!");
+                var data = xhr.responseText;
+                var obj = JSON.parse(data.replace(/\r?\n|\r/g, ''));
+
+                this.populatePlaylist(obj.id, user_id, access_token);
+            }
+        }
+
+        xhr.open("POST", "https://api.spotify.com/v1/users/" + user_id +
+                         "/playlists");
+        xhr.setRequestHeader("Authorization", "Bearer " + access_token);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        // xhr.send('{"name": "' + name + '", "description": "' + desc + '}');
+        // Alert.alert(bodyData);
+        xhr.send('{"name":"' + name + '","description": "Your Jamblr playlist!","public": false}');
+    }
+
+    populatePlaylist = async (playlist_id, user_id, access_token) => {
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = (e) => {
+            if (xhr.readyState !== 4) {
+                return;
+            }
+            if (xhr.readyState == 4 && xhr.status == 201) {
+                var data = xhr.responseText;
+                var obj = JSON.parse(data.replace(/\r?\n|\r/g, ''));
+
+                if (this.rightsTotal.length <= 100) {
+                    Alert.alert("Playlist created with " +
+                                this.rightsTotal.length + " songs!");
+                } else {
+                    Alert.alert("Playlist created with 100 songs!");
+                }
+            }
+        }
+
+        /* Grab the first 100 elements. */
+        var data = this.rightsTotal.slice(0, 100);
+        var tracks = [];
+        for (var i = 0; i < data.length; i++) {
+            tracks.push(data[i].uri);
+        }
+
+        xhr.open("POST", "https://api.spotify.com/v1/playlists/" + playlist_id +
+                         "/tracks");
+        xhr.setRequestHeader("Authorization", "Bearer " + access_token);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify(tracks));
     }
 
     render()
@@ -439,11 +515,16 @@ class SimpleDeck extends Component {
                                             </CardItem>
                                             </Card>}/>
                                             </View>
-                                        <View style = {{justifyContent: 'center', alignItems: 'center', marginBottom: 20}}>
+                                        <View style = {{justifyContent: 'center', alignItems: 'center', marginBottom: 20, flexDirection: 'row'}}>
                                         <TouchableOpacity
-                                        style = {{height: 50, width: 100, backgroundColor: '#2980b9', justifyContent: 'center', alignItems: 'center', borderRadius: 50, borderWidth: 0.5, borderColor: 'black'}}
+                                        style = {{height: 50, width: 100, backgroundColor: '#2980b9', justifyContent: 'center', alignItems: 'center', borderRadius: 50, borderWidth: 0.5, borderColor: 'black', marginHorizontal: 5}}
                                         onPress={() => this.refreshPressed()}>
                                             <Icon name="refresh" color="white" fontSize="50" />
+                                        </TouchableOpacity>
+                                        <TouchableOpacity
+                                        style = {{height: 50, width: 100, backgroundColor: '#2980b9', justifyContent: 'center', alignItems: 'center', borderRadius: 50, borderWidth: 0.5, borderColor: 'black', marginHorizontal: 5}}
+                                        onPress={() => this.exportPressed()}>
+                                            <Icon name="send" color="white" fontSize="50" />
                                         </TouchableOpacity>
                                         </View>
 
