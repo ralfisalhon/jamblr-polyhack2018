@@ -62,6 +62,7 @@ class SimpleDeck extends Component {
 
         var self = this;
         this.getSongsFromGenres = this.getSongsFromGenres.bind(this);
+        this.spotifyLoginButtonWasPressed = this.spotifyLoginButtonWasPressed.bind(this);
 
         this.state = {spotifyInitialized: false};
         // this.spotifyLoginButtonWasPressed();
@@ -165,7 +166,7 @@ class SimpleDeck extends Component {
             console.log("accessToken", Spotify.getAuth().accessToken);
             console.log("user_id", globalUserID);
 		}).catch((error) => {
-			Alert.alert("Error", error.message);
+			Alert.alert("Error1", error.message);
 		});
 
         this.getSongsFromGenres(["pop", "alternative", "rap", "metal", "jazz"], Spotify.getAuth().accessToken)
@@ -290,7 +291,7 @@ class SimpleDeck extends Component {
                     this.logIn();
 				}
 			}).catch((error) => {
-				Alert.alert("Error", error.message);
+				Alert.alert("Error2", error.message);
 			});
 
             // this.spotifyLoginButtonWasPressed();
@@ -327,7 +328,7 @@ class SimpleDeck extends Component {
 			}
 		}).catch((error) => {
 			// error
-			Alert.alert("Error", error.message);
+			Alert.alert("Error3", error.message);
 		});
 	}
 
@@ -400,7 +401,7 @@ class SimpleDeck extends Component {
                 return;
             }
             if (xhr.readyState == 4 && xhr.status == 201) {
-                console.log("MADE IT HERE");
+                // console.log("MADE IT HERE");
                 // Alert.alert("Playlist created!");
                 var data = xhr.responseText;
                 var obj = JSON.parse(data.replace(/\r?\n|\r/g, ''));
@@ -560,8 +561,9 @@ class SimpleDeck extends Component {
                 {
                     return (
         				<View style={styles.container}>
+                        <StatusBar barStyle= "light-content" />
         					<Text style={styles.greeting}>
-        						Hey! You! Log into your spotify
+        						Log into Spotify to use Jamblr
         					</Text>
         					<TouchableHighlight onPress={this.spotifyLoginButtonWasPressed} style={styles.spotifyLoginButton}>
         						<Text style={styles.spotifyLoginButtonText}>Log into Spotify</Text>
