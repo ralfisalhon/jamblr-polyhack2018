@@ -105,7 +105,7 @@ class SimpleDeck extends Component {
     }
     getSongsFromGenres = async (genres, access_token) => {
         var xhr = new XMLHttpRequest();
-        var query = "limit=10&seed_genres=";
+        var query = "limit=20&seed_genres=";
 
         for (var i = 0; i < genres.length; i++) {
             if (i != 0)
@@ -275,12 +275,12 @@ class SimpleDeck extends Component {
                                         <DeckSwiper
                                         dataSource={this.state.cards}
                                         looping={false}
-                                        onSwipeRight={item =>
-                                            Alert.alert('swiped right', item.text)
-                                        }
-                                        onSwipeLeft={item =>
-                                            Alert.alert('swiped left', item.text)
-                                        }
+                                        // onSwipeRight={item =>
+                                        //     Alert.alert('swiped right', item.text)
+                                        // }
+                                        // onSwipeLeft={item =>
+                                        //     Alert.alert('swiped left', item.text)
+                                        // }
                                         renderEmpty={() =>
                                             <View style = {styles.end}>
                                                 <Text>End of cards</Text>
@@ -291,15 +291,13 @@ class SimpleDeck extends Component {
                                                 <Thumbnail source={{uri: item.image}} />
                                                 <View style = {{padding: 10}}>
                                                     <Text>{item.name}</Text>
+                                                    <Text note>{item.artists[0].name} </Text>
                                                 </View>
                                             </CardItem>
                                             <CardItem cardBody>
                                                 <Image style = {styles.image}
                                                 source={{uri: item.image}}
                                                 />
-                                            </CardItem>
-                                            <CardItem style = {{justifyContent: 'center'}}>
-                                                <Text> {item.text} </Text>
                                             </CardItem>
                                             </Card>}/>
                                             </View>
