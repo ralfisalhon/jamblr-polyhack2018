@@ -17,6 +17,8 @@ import {
     Content,
 } from "native-base";
 
+global.globalData = "";
+
 import TrackPlayer from 'react-native-track-player';
 import Spotify from 'rn-spotify-sdk';
 
@@ -76,7 +78,11 @@ class SimpleDeck extends Component {
             tab1: true,
             tab2: false,
             spotifyLoggedIn: false,
+            cards: [],
         };
+
+        var self = this;
+        this.getSongsFromGenres = this.getSongsFromGenres.bind(this);
 
         this.state = {spotifyInitialized: false};
         // this.spotifyLoginButtonWasPressed();
@@ -94,6 +100,65 @@ class SimpleDeck extends Component {
         });
     }
 
+    filterCardData(data) {
+
+    }
+    getSongsFromGenres = async (genres, access_token) => {
+        var xhr = new XMLHttpRequest();
+        var query = "limit=10&seed_genres=";
+
+        for (var i = 0; i < genres.length; i++) {
+            if (i != 0)
+                query += ", "
+            query += genres[i];
+        }
+
+        xhr.onreadystatechange = (e) => {
+            if (xhr.readyState !== 4) {
+                return;
+            }
+        	if (xhr.readyState == 4 && xhr.status == 200) {
+                data = xhr.responseText;
+
+                var obj = JSON.parse(data.replace(/\r?\n|\r/g, ''));
+                // console.log("OBJ IS HERE", obj);
+
+                var final = [];
+
+            	for (var i = 0; i < obj.tracks.length; i++) {
+            		var curr = obj.tracks[i];
+            		var temp = {
+            			artists:     curr.artists,
+                        image:       curr.album.images[0].url,
+            			id:          curr.id,
+            			name:        curr.name,
+            			preview_url: curr.preview_url,
+            			seconds:     (curr.duration_ms / 1000)
+            		};
+                    if (temp.preview_url != null) {
+                		final.push(temp);
+                    }
+            	}
+
+                // console.log(final);
+                this.setState({
+                    cards: final,
+                });
+                console.log(this.state.cards);
+        	}
+        }
+
+        xhr.open("GET", "https://api.spotify.com/v1/recommendations?" + query);
+        xhr.setRequestHeader("Authorization", "Bearer " + access_token);
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send();
+    }
+
+    test() {
+        Alert.alert("test");
+    }
+
     logIn()
 	{
 		// Alert.alert("Logged in");
@@ -102,12 +167,14 @@ class SimpleDeck extends Component {
         });
 
         Spotify.getMe().then((result) => {
-            Alert.alert("display_name", result.display_name)
+            // Alert.alert("display_name", result.display_name)
 		}).catch((error) => {
 			Alert.alert("Error", error.message);
 		});
 
-        Alert.alert("accessToken", Spotify.getAuth().accessToken);
+        console.log("accessToken", Spotify.getAuth().accessToken);
+
+        this.getSongsFromGenres(["hip-hop"], Spotify.getAuth().accessToken)
 	}
 
     componentDidMount()
@@ -192,62 +259,77 @@ class SimpleDeck extends Component {
             {
                 if (this.state.spotifyLoggedIn)
                 {
-                    return (
-                        <View style = {styles.container2}>
-                            <View style = {styles.header}>
-                            <StatusBar barStyle= "light-content" />
-                                <View style = {{height: 16}}></View>
-                                    <Text style = {styles.name}>
-                                        Music Swiper
-                                    </Text>
-                            </View>
-                            <View style = {styles.deckSwiper}>
-                                <DeckSwiper
-                                dataSource={cards}
-                                looping={false}
-                                onSwipeRight={item =>
-                                    Alert.alert('swiped right', item.text)
-                                }
-                                onSwipeLeft={item =>
-                                    Alert.alert('swiped left', item.text)
-                                }
-                                renderEmpty={() =>
-                                    <View style = {styles.end}>
-                                        <Text>End of cards</Text>
-                                    </View>}
-                                renderItem={item =>
-                                    <Card style={{ elevation: 3 }}>
-                                    <CardItem>
-                                        <Thumbnail source={item.image} />
-                                        <View style = {{padding: 10}}>
-                                            <Text>{item.name}</Text>
-                                        </View>
-                                    </CardItem>
-                                    <CardItem cardBody>
-                                        <Image style = {styles.image}
-                                        source={item.image}
-                                        />
-                                    </CardItem>
-                                    <CardItem style = {{justifyContent: 'center'}}>
-                                        <Text> {item.text} </Text>
-                                    </CardItem>
-                                    </Card>}/>
+                    {
+                        if (this.state.cards && this.state.cards.length > 0)
+                        {
+                            return (
+                                <View style = {styles.container2}>
+                                    <View style = {styles.header}>
+                                    <StatusBar barStyle= "light-content" />
+                                        <View style = {{height: 16}}></View>
+                                            <Text style = {styles.name}>
+                                                Music Swiper
+                                            </Text>
                                     </View>
+                                    <View style = {styles.deckSwiper}>
+                                        <DeckSwiper
+                                        dataSource={this.state.cards}
+                                        looping={false}
+                                        onSwipeRight={item =>
+                                            Alert.alert('swiped right', item.text)
+                                        }
+                                        onSwipeLeft={item =>
+                                            Alert.alert('swiped left', item.text)
+                                        }
+                                        renderEmpty={() =>
+                                            <View style = {styles.end}>
+                                                <Text>End of cards</Text>
+                                            </View>}
+                                        renderItem={item =>
+                                            <Card style={{ elevation: 3 }}>
+                                            <CardItem>
+                                                <Thumbnail source={{uri: item.image}} />
+                                                <View style = {{padding: 10}}>
+                                                    <Text>{item.name}</Text>
+                                                </View>
+                                            </CardItem>
+                                            <CardItem cardBody>
+                                                <Image style = {styles.image}
+                                                source={{uri: item.image}}
+                                                />
+                                            </CardItem>
+                                            <CardItem style = {{justifyContent: 'center'}}>
+                                                <Text> {item.text} </Text>
+                                            </CardItem>
+                                            </Card>}/>
+                                            </View>
 
-                                <Footer>
-                                    <FooterTab>
-                                    <Button active={this.state.tab1} onPress={() => this.toggleTab1()}>
-                                        <Icon active={this.state.tab1} name="ios-musical-notes" />
-                                        <Text>Swiper</Text>
-                                    </Button>
-                                    <Button active={this.state.tab2} onPress={() => this.toggleTab2()}>
-                                        <Icon active={this.state.tab2} name="ios-list-box" />
-                                        <Text>Results</Text>
-                                    </Button>
-                                    </FooterTab>
-                                </Footer>
-                            </View>
-        			);
+                                        <Footer>
+                                            <FooterTab>
+                                            <Button active={this.state.tab1} onPress={() => this.toggleTab1()}>
+                                                <Icon active={this.state.tab1} name="ios-musical-notes" />
+                                                <Text>Swiper</Text>
+                                            </Button>
+                                            <Button active={this.state.tab2} onPress={() => this.toggleTab2()}>
+                                                <Icon active={this.state.tab2} name="ios-list-box" />
+                                                <Text>Results</Text>
+                                            </Button>
+                                            </FooterTab>
+                                        </Footer>
+                                    </View>
+                			);
+                        }
+                        else
+                        {
+                            return (
+                				<View style={styles.container}>
+                					<Text style={styles.greeting}>
+                						Waiting for data
+                					</Text>
+                				</View>
+                			);
+                        }
+                    }
                 }
                 else
                 {
