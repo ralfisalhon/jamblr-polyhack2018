@@ -32,9 +32,10 @@
                 var obj = JSON.parse(data.replace(/\r?\n|\r/g, ''));
 
                 if (this.state.rights.length <= 100) {
-                    Alert.alert("Songs added!");
+                    Alert.alert("Playlist created with " + 
+                                this.state.rights.length + " songs!");
                 } else {
-                    Alert.alert("100 songs added!");
+                    Alert.alert("Playlist created with 100 songs!");
                 }
             }
         }
