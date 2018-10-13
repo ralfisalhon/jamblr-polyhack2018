@@ -13,6 +13,7 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* MusicSwiperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MusicSwiperTests.m */; };
+		058CD59A388041F4A6C774FC /* libRNSpotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D43F529C864AB095195683 /* libRNSpotify.a */; };
 		104640200520492F82775E31 /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 757F6C2DC09345C4AB5E58EC /* rubicon-icon-font.ttf */; };
 		11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
@@ -49,9 +50,13 @@
 		95128BC7D3504A48AAF4C177 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7F88DD26E3FF46F6A5A0958F /* Foundation.ttf */; };
 		9B4C216C81044A7E819F6F04 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B4BA2F1FE0EF4DFD9C99226A /* SimpleLineIcons.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		B1A7FE19217182970027B2FD /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1A7FDCF2171827F0027B2FD /* SpotifyMetadata.framework */; };
+		B1A7FE1A217182970027B2FD /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1A7FE152171827F0027B2FD /* SpotifyAuthentication.framework */; };
+		B1A7FE1B217182970027B2FD /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1A7FE132171827F0027B2FD /* SpotifyAudioPlayback.framework */; };
 		B1B7098B21717A8100D96536 /* dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7098A21717A8100D96536 /* dummy.swift */; };
 		B6F4B22DCDED4408BCFF7D20 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13E0A2CF081A45C4B73F4C20 /* FontAwesome.ttf */; };
 		C3B97828645B47A4A74CDCAB /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02E04AEE7C0F444998D3C285 /* MaterialCommunityIcons.ttf */; };
+		C7B2F95FB61543BB8F4349A6 /* libRNEventEmitter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8854A89F68C4822AAE30A2C /* libRNEventEmitter.a */; };
 		D0A23477271147768B9B0EAF /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 246906504A294E89BC3A791C /* Entypo.ttf */; };
 		F21604E682D54BB6811BD2AC /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC1A6DD623CF4544B930513E /* Zocial.ttf */; };
 /* End PBXBuildFile section */
@@ -330,6 +335,27 @@
 			remoteGlobalIDString = 358F4ED71D1E81A9004DF814;
 			remoteInfo = RCTBlob;
 		};
+		B1A7FD76217182170027B2FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 41B7835A036E44DEA2517B48 /* RNSpotify.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNSpotify;
+		};
+		B1A7FDB12171821B0027B2FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 231C436E42C249C0B6B70D93 /* RNEventEmitter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNEventEmitter;
+		};
+		B1A7FE172171827F0027B2FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1A7FDB72171827F0027B2FD /* Simple Track Playback.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 37E2C9CD18B4DF7D00D5D823;
+			remoteInfo = "Simple Track Playback";
+		};
 		B1B709872171794700D96536 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C91533E352E4494887543978 /* RNTrackPlayer.xcodeproj */;
@@ -351,6 +377,7 @@
 		00E356F21AD99517003FC87E /* MusicSwiperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicSwiperTests.m; sourceTree = "<group>"; };
 		0103DFAEC6A84EB2AC9563D0 /* libRNTrackPlayer.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNTrackPlayer.a; sourceTree = "<group>"; };
 		02E04AEE7C0F444998D3C285 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		10D43F529C864AB095195683 /* libRNSpotify.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSpotify.a; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* MusicSwiper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicSwiper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -363,10 +390,12 @@
 		13E0A2CF081A45C4B73F4C20 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		158480CA8DFC447FBF01BE67 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/native-base/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		231C436E42C249C0B6B70D93 /* RNEventEmitter.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNEventEmitter.xcodeproj; path = "../node_modules/react-native-events/ios/RNEventEmitter.xcodeproj"; sourceTree = "<group>"; };
 		246906504A294E89BC3A791C /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* MusicSwiper-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MusicSwiper-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* MusicSwiper-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MusicSwiper-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		41B7835A036E44DEA2517B48 /* RNSpotify.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSpotify.xcodeproj; path = "../node_modules/rn-spotify-sdk/ios/RNSpotify.xcodeproj"; sourceTree = "<group>"; };
 		49670DA476C84972B71E736D /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		551119DF940B4141B15516E2 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		56A55BDA9E0F4A4DB09E26A5 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
@@ -377,6 +406,91 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		88D048E8CFD8471086EEB096 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		B1A7FDB52171827F0027B2FD /* spotify_token_swap.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = spotify_token_swap.rb; sourceTree = "<group>"; };
+		B1A7FDB72171827F0027B2FD /* Simple Track Playback.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "Simple Track Playback.xcodeproj"; sourceTree = "<group>"; };
+		B1A7FDBC2171827F0027B2FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B1A7FDBD2171827F0027B2FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B1A7FDBE2171827F0027B2FD /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		B1A7FDBF2171827F0027B2FD /* LoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		B1A7FDC02171827F0027B2FD /* Simple Track Playback-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Simple Track Playback-Prefix.pch"; sourceTree = "<group>"; };
+		B1A7FDC12171827F0027B2FD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B1A7FDC22171827F0027B2FD /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		B1A7FDC32171827F0027B2FD /* backdrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backdrop.png; sourceTree = "<group>"; };
+		B1A7FDC52171827F0027B2FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		B1A7FDC62171827F0027B2FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B1A7FDC72171827F0027B2FD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B1A7FDC82171827F0027B2FD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B1A7FDC92171827F0027B2FD /* Simple Track Playback-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Simple Track Playback-Info.plist"; sourceTree = "<group>"; };
+		B1A7FDCA2171827F0027B2FD /* LoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		B1A7FDCB2171827F0027B2FD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B1A7FDCC2171827F0027B2FD /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		B1A7FDCD2171827F0027B2FD /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		B1A7FDCE2171827F0027B2FD /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		B1A7FDCF2171827F0027B2FD /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
+		B1A7FDD12171827F0027B2FD /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		B1A7FDD32171827F0027B2FD /* styles.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
+		B1A7FDD42171827F0027B2FD /* stylesPrint.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = stylesPrint.css; sourceTree = "<group>"; };
+		B1A7FDD62171827F0027B2FD /* SPTImage.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTImage.html; sourceTree = "<group>"; };
+		B1A7FDD72171827F0027B2FD /* SPTCoreAudioDeviceSource.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTCoreAudioDeviceSource.html; sourceTree = "<group>"; };
+		B1A7FDD82171827F0027B2FD /* SPTCoreAudioController.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTCoreAudioController.html; sourceTree = "<group>"; };
+		B1A7FDD92171827F0027B2FD /* SPTPlaybackTrack.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTPlaybackTrack.html; sourceTree = "<group>"; };
+		B1A7FDDA2171827F0027B2FD /* SPTAuth.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTAuth.html; sourceTree = "<group>"; };
+		B1A7FDDB2171827F0027B2FD /* SPTAlbum.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTAlbum.html; sourceTree = "<group>"; };
+		B1A7FDDC2171827F0027B2FD /* SPTTrack.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTTrack.html; sourceTree = "<group>"; };
+		B1A7FDDD2171827F0027B2FD /* SPTPartialTrack.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTPartialTrack.html; sourceTree = "<group>"; };
+		B1A7FDDE2171827F0027B2FD /* SPTStoreViewController.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTStoreViewController.html; sourceTree = "<group>"; };
+		B1A7FDDF2171827F0027B2FD /* SPTPartialPlaylist.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTPartialPlaylist.html; sourceTree = "<group>"; };
+		B1A7FDE02171827F0027B2FD /* SPTArtist.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTArtist.html; sourceTree = "<group>"; };
+		B1A7FDE12171827F0027B2FD /* SPTPartialAlbum.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTPartialAlbum.html; sourceTree = "<group>"; };
+		B1A7FDE22171827F0027B2FD /* SPTUser.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTUser.html; sourceTree = "<group>"; };
+		B1A7FDE32171827F0027B2FD /* SPTJSONDecoding.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTJSONDecoding.html; sourceTree = "<group>"; };
+		B1A7FDE42171827F0027B2FD /* SPTPlaylistList.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTPlaylistList.html; sourceTree = "<group>"; };
+		B1A7FDE52171827F0027B2FD /* SPTSearch.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTSearch.html; sourceTree = "<group>"; };
+		B1A7FDE62171827F0027B2FD /* SPTFeaturedPlaylistList.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTFeaturedPlaylistList.html; sourceTree = "<group>"; };
+		B1A7FDE72171827F0027B2FD /* SPTJSONObjectBase.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTJSONObjectBase.html; sourceTree = "<group>"; };
+		B1A7FDE82171827F0027B2FD /* SPTAuthViewController.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTAuthViewController.html; sourceTree = "<group>"; };
+		B1A7FDE92171827F0027B2FD /* SPTFollow.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTFollow.html; sourceTree = "<group>"; };
+		B1A7FDEA2171827F0027B2FD /* SPTPartialArtist.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTPartialArtist.html; sourceTree = "<group>"; };
+		B1A7FDEB2171827F0027B2FD /* SPTAudioStreamingController.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTAudioStreamingController.html; sourceTree = "<group>"; };
+		B1A7FDEC2171827F0027B2FD /* SPTPlaylistSnapshot.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTPlaylistSnapshot.html; sourceTree = "<group>"; };
+		B1A7FDED2171827F0027B2FD /* SPTDiskCache.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTDiskCache.html; sourceTree = "<group>"; };
+		B1A7FDEE2171827F0027B2FD /* SPTPlaylistTrack.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTPlaylistTrack.html; sourceTree = "<group>"; };
+		B1A7FDEF2171827F0027B2FD /* SPTPlayOptions.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTPlayOptions.html; sourceTree = "<group>"; };
+		B1A7FDF02171827F0027B2FD /* SPTCoreAudioDevice.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTCoreAudioDevice.html; sourceTree = "<group>"; };
+		B1A7FDF12171827F0027B2FD /* SPTSavedTrack.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTSavedTrack.html; sourceTree = "<group>"; };
+		B1A7FDF22171827F0027B2FD /* SPTBrowse.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTBrowse.html; sourceTree = "<group>"; };
+		B1A7FDF32171827F0027B2FD /* SPTRequest.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTRequest.html; sourceTree = "<group>"; };
+		B1A7FDF42171827F0027B2FD /* SPTCircularBuffer.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTCircularBuffer.html; sourceTree = "<group>"; };
+		B1A7FDF52171827F0027B2FD /* SPTYourMusic.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTYourMusic.html; sourceTree = "<group>"; };
+		B1A7FDF62171827F0027B2FD /* SPTSession.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTSession.html; sourceTree = "<group>"; };
+		B1A7FDF72171827F0027B2FD /* SPTListPage.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTListPage.html; sourceTree = "<group>"; };
+		B1A7FDF82171827F0027B2FD /* SPTPlaybackState.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTPlaybackState.html; sourceTree = "<group>"; };
+		B1A7FDF92171827F0027B2FD /* hierarchy.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = hierarchy.html; sourceTree = "<group>"; };
+		B1A7FDFB2171827F0027B2FD /* SPTProduct.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTProduct.html; sourceTree = "<group>"; };
+		B1A7FDFC2171827F0027B2FD /* SPTAlbumType.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTAlbumType.html; sourceTree = "<group>"; };
+		B1A7FDFD2171827F0027B2FD /* SPTBitrate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTBitrate.html; sourceTree = "<group>"; };
+		B1A7FDFE2171827F0027B2FD /* SPTSearchQueryType.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTSearchQueryType.html; sourceTree = "<group>"; };
+		B1A7FDFF2171827F0027B2FD /* SPTRepeatMode.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTRepeatMode.html; sourceTree = "<group>"; };
+		B1A7FE012171827F0027B2FD /* library_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = library_background.png; sourceTree = "<group>"; };
+		B1A7FE022171827F0027B2FD /* disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosure.png; sourceTree = "<group>"; };
+		B1A7FE032171827F0027B2FD /* disclosure_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosure_open.png; sourceTree = "<group>"; };
+		B1A7FE042171827F0027B2FD /* button_bar_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_bar_background.png; sourceTree = "<group>"; };
+		B1A7FE052171827F0027B2FD /* title_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_background.png; sourceTree = "<group>"; };
+		B1A7FE072171827F0027B2FD /* SPTRequestHandlerProtocol.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTRequestHandlerProtocol.html; sourceTree = "<group>"; };
+		B1A7FE082171827F0027B2FD /* SPTAudioStreamingPlaybackDelegate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTAudioStreamingPlaybackDelegate.html; sourceTree = "<group>"; };
+		B1A7FE092171827F0027B2FD /* SPTStoreControllerDelegate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTStoreControllerDelegate.html; sourceTree = "<group>"; };
+		B1A7FE0A2171827F0027B2FD /* SPTTrackProvider.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTTrackProvider.html; sourceTree = "<group>"; };
+		B1A7FE0B2171827F0027B2FD /* SPTAuthViewDelegate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTAuthViewDelegate.html; sourceTree = "<group>"; };
+		B1A7FE0C2171827F0027B2FD /* SPTCoreAudioControllerDelegate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTCoreAudioControllerDelegate.html; sourceTree = "<group>"; };
+		B1A7FE0D2171827F0027B2FD /* SPTPartialObject.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTPartialObject.html; sourceTree = "<group>"; };
+		B1A7FE0E2171827F0027B2FD /* SPTJSONObject.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTJSONObject.html; sourceTree = "<group>"; };
+		B1A7FE0F2171827F0027B2FD /* SPTDiskCaching.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTDiskCaching.html; sourceTree = "<group>"; };
+		B1A7FE102171827F0027B2FD /* SPTAudioStreamingDelegate.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = SPTAudioStreamingDelegate.html; sourceTree = "<group>"; };
+		B1A7FE112171827F0027B2FD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B1A7FE122171827F0027B2FD /* ISSUE_TEMPLATE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ISSUE_TEMPLATE.md; sourceTree = "<group>"; };
+		B1A7FE132171827F0027B2FD /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAudioPlayback.framework; sourceTree = "<group>"; };
+		B1A7FE142171827F0027B2FD /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		B1A7FE152171827F0027B2FD /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
 		B1B7098921717A8100D96536 /* MusicSwiper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MusicSwiper-Bridging-Header.h"; sourceTree = "<group>"; };
 		B1B7098A21717A8100D96536 /* dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummy.swift; sourceTree = "<group>"; };
 		B1D8A27AF13A4E899694C4F3 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
@@ -384,6 +498,7 @@
 		C91533E352E4494887543978 /* RNTrackPlayer.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNTrackPlayer.xcodeproj; path = "../node_modules/react-native-track-player/ios/RNTrackPlayer.xcodeproj"; sourceTree = "<group>"; };
 		DC1A6DD623CF4544B930513E /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		E0BD1E6BBA604F6B91E2571C /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
+		E8854A89F68C4822AAE30A2C /* libRNEventEmitter.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNEventEmitter.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -399,6 +514,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1A7FE19217182970027B2FD /* SpotifyMetadata.framework in Frameworks */,
+				B1A7FE1A217182970027B2FD /* SpotifyAuthentication.framework in Frameworks */,
+				B1A7FE1B217182970027B2FD /* SpotifyAudioPlayback.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -412,6 +530,8 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				1DD8906A0FC244E5B2E63856 /* libRNTrackPlayer.a in Frameworks */,
+				058CD59A388041F4A6C774FC /* libRNSpotify.a in Frameworks */,
+				C7B2F95FB61543BB8F4349A6 /* libRNEventEmitter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,6 +682,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B1A7FDB32171827F0027B2FD /* SpotifySDK */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 			);
 			name = Frameworks;
@@ -601,6 +722,8 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				C91533E352E4494887543978 /* RNTrackPlayer.xcodeproj */,
+				41B7835A036E44DEA2517B48 /* RNSpotify.xcodeproj */,
+				231C436E42C249C0B6B70D93 /* RNEventEmitter.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -650,10 +773,201 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B1A7FD4E217182170027B2FD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B1A7FD77217182170027B2FD /* libRNSpotify.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1A7FDAE2171821B0027B2FD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B1A7FDB22171821B0027B2FD /* libRNEventEmitter.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1A7FDB32171827F0027B2FD /* SpotifySDK */ = {
+			isa = PBXGroup;
+			children = (
+				B1A7FDB42171827F0027B2FD /* Demo Projects */,
+				B1A7FDCD2171827F0027B2FD /* LICENSE */,
+				B1A7FDCE2171827F0027B2FD /* CHANGELOG.md */,
+				B1A7FDCF2171827F0027B2FD /* SpotifyMetadata.framework */,
+				B1A7FDD02171827F0027B2FD /* docs */,
+				B1A7FE112171827F0027B2FD /* README.md */,
+				B1A7FE122171827F0027B2FD /* ISSUE_TEMPLATE.md */,
+				B1A7FE132171827F0027B2FD /* SpotifyAudioPlayback.framework */,
+				B1A7FE142171827F0027B2FD /* .gitattributes */,
+				B1A7FE152171827F0027B2FD /* SpotifyAuthentication.framework */,
+			);
+			name = SpotifySDK;
+			path = "../node_modules/rn-spotify-sdk/ios/external/SpotifySDK";
+			sourceTree = "<group>";
+		};
+		B1A7FDB42171827F0027B2FD /* Demo Projects */ = {
+			isa = PBXGroup;
+			children = (
+				B1A7FDB52171827F0027B2FD /* spotify_token_swap.rb */,
+				B1A7FDB62171827F0027B2FD /* Simple Track Playback */,
+			);
+			path = "Demo Projects";
+			sourceTree = "<group>";
+		};
+		B1A7FDB62171827F0027B2FD /* Simple Track Playback */ = {
+			isa = PBXGroup;
+			children = (
+				B1A7FDB72171827F0027B2FD /* Simple Track Playback.xcodeproj */,
+				B1A7FDBA2171827F0027B2FD /* Simple Track Playback */,
+			);
+			path = "Simple Track Playback";
+			sourceTree = "<group>";
+		};
+		B1A7FDB82171827F0027B2FD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B1A7FE182171827F0027B2FD /* Simple Track Playback.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1A7FDBA2171827F0027B2FD /* Simple Track Playback */ = {
+			isa = PBXGroup;
+			children = (
+				B1A7FDBB2171827F0027B2FD /* InfoPlist.strings */,
+				B1A7FDBD2171827F0027B2FD /* AppDelegate.h */,
+				B1A7FDBE2171827F0027B2FD /* Config.h */,
+				B1A7FDBF2171827F0027B2FD /* LoginController.m */,
+				B1A7FDC02171827F0027B2FD /* Simple Track Playback-Prefix.pch */,
+				B1A7FDC12171827F0027B2FD /* ViewController.m */,
+				B1A7FDC22171827F0027B2FD /* WebViewController.m */,
+				B1A7FDC32171827F0027B2FD /* backdrop.png */,
+				B1A7FDC42171827F0027B2FD /* Main_iPhone.storyboard */,
+				B1A7FDC62171827F0027B2FD /* main.m */,
+				B1A7FDC72171827F0027B2FD /* Images.xcassets */,
+				B1A7FDC82171827F0027B2FD /* AppDelegate.m */,
+				B1A7FDC92171827F0027B2FD /* Simple Track Playback-Info.plist */,
+				B1A7FDCA2171827F0027B2FD /* LoginController.h */,
+				B1A7FDCB2171827F0027B2FD /* ViewController.h */,
+				B1A7FDCC2171827F0027B2FD /* WebViewController.h */,
+			);
+			path = "Simple Track Playback";
+			sourceTree = "<group>";
+		};
+		B1A7FDD02171827F0027B2FD /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				B1A7FDD12171827F0027B2FD /* index.html */,
+				B1A7FDD22171827F0027B2FD /* css */,
+				B1A7FDD52171827F0027B2FD /* Classes */,
+				B1A7FDF92171827F0027B2FD /* hierarchy.html */,
+				B1A7FDFA2171827F0027B2FD /* Constants */,
+				B1A7FE002171827F0027B2FD /* img */,
+				B1A7FE062171827F0027B2FD /* Protocols */,
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
+		B1A7FDD22171827F0027B2FD /* css */ = {
+			isa = PBXGroup;
+			children = (
+				B1A7FDD32171827F0027B2FD /* styles.css */,
+				B1A7FDD42171827F0027B2FD /* stylesPrint.css */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
+		B1A7FDD52171827F0027B2FD /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B1A7FDD62171827F0027B2FD /* SPTImage.html */,
+				B1A7FDD72171827F0027B2FD /* SPTCoreAudioDeviceSource.html */,
+				B1A7FDD82171827F0027B2FD /* SPTCoreAudioController.html */,
+				B1A7FDD92171827F0027B2FD /* SPTPlaybackTrack.html */,
+				B1A7FDDA2171827F0027B2FD /* SPTAuth.html */,
+				B1A7FDDB2171827F0027B2FD /* SPTAlbum.html */,
+				B1A7FDDC2171827F0027B2FD /* SPTTrack.html */,
+				B1A7FDDD2171827F0027B2FD /* SPTPartialTrack.html */,
+				B1A7FDDE2171827F0027B2FD /* SPTStoreViewController.html */,
+				B1A7FDDF2171827F0027B2FD /* SPTPartialPlaylist.html */,
+				B1A7FDE02171827F0027B2FD /* SPTArtist.html */,
+				B1A7FDE12171827F0027B2FD /* SPTPartialAlbum.html */,
+				B1A7FDE22171827F0027B2FD /* SPTUser.html */,
+				B1A7FDE32171827F0027B2FD /* SPTJSONDecoding.html */,
+				B1A7FDE42171827F0027B2FD /* SPTPlaylistList.html */,
+				B1A7FDE52171827F0027B2FD /* SPTSearch.html */,
+				B1A7FDE62171827F0027B2FD /* SPTFeaturedPlaylistList.html */,
+				B1A7FDE72171827F0027B2FD /* SPTJSONObjectBase.html */,
+				B1A7FDE82171827F0027B2FD /* SPTAuthViewController.html */,
+				B1A7FDE92171827F0027B2FD /* SPTFollow.html */,
+				B1A7FDEA2171827F0027B2FD /* SPTPartialArtist.html */,
+				B1A7FDEB2171827F0027B2FD /* SPTAudioStreamingController.html */,
+				B1A7FDEC2171827F0027B2FD /* SPTPlaylistSnapshot.html */,
+				B1A7FDED2171827F0027B2FD /* SPTDiskCache.html */,
+				B1A7FDEE2171827F0027B2FD /* SPTPlaylistTrack.html */,
+				B1A7FDEF2171827F0027B2FD /* SPTPlayOptions.html */,
+				B1A7FDF02171827F0027B2FD /* SPTCoreAudioDevice.html */,
+				B1A7FDF12171827F0027B2FD /* SPTSavedTrack.html */,
+				B1A7FDF22171827F0027B2FD /* SPTBrowse.html */,
+				B1A7FDF32171827F0027B2FD /* SPTRequest.html */,
+				B1A7FDF42171827F0027B2FD /* SPTCircularBuffer.html */,
+				B1A7FDF52171827F0027B2FD /* SPTYourMusic.html */,
+				B1A7FDF62171827F0027B2FD /* SPTSession.html */,
+				B1A7FDF72171827F0027B2FD /* SPTListPage.html */,
+				B1A7FDF82171827F0027B2FD /* SPTPlaybackState.html */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		B1A7FDFA2171827F0027B2FD /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				B1A7FDFB2171827F0027B2FD /* SPTProduct.html */,
+				B1A7FDFC2171827F0027B2FD /* SPTAlbumType.html */,
+				B1A7FDFD2171827F0027B2FD /* SPTBitrate.html */,
+				B1A7FDFE2171827F0027B2FD /* SPTSearchQueryType.html */,
+				B1A7FDFF2171827F0027B2FD /* SPTRepeatMode.html */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		B1A7FE002171827F0027B2FD /* img */ = {
+			isa = PBXGroup;
+			children = (
+				B1A7FE012171827F0027B2FD /* library_background.png */,
+				B1A7FE022171827F0027B2FD /* disclosure.png */,
+				B1A7FE032171827F0027B2FD /* disclosure_open.png */,
+				B1A7FE042171827F0027B2FD /* button_bar_background.png */,
+				B1A7FE052171827F0027B2FD /* title_background.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		B1A7FE062171827F0027B2FD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B1A7FE072171827F0027B2FD /* SPTRequestHandlerProtocol.html */,
+				B1A7FE082171827F0027B2FD /* SPTAudioStreamingPlaybackDelegate.html */,
+				B1A7FE092171827F0027B2FD /* SPTStoreControllerDelegate.html */,
+				B1A7FE0A2171827F0027B2FD /* SPTTrackProvider.html */,
+				B1A7FE0B2171827F0027B2FD /* SPTAuthViewDelegate.html */,
+				B1A7FE0C2171827F0027B2FD /* SPTCoreAudioControllerDelegate.html */,
+				B1A7FE0D2171827F0027B2FD /* SPTPartialObject.html */,
+				B1A7FE0E2171827F0027B2FD /* SPTJSONObject.html */,
+				B1A7FE0F2171827F0027B2FD /* SPTDiskCaching.html */,
+				B1A7FE102171827F0027B2FD /* SPTAudioStreamingDelegate.html */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		B1B7095E2171794600D96536 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
 				0103DFAEC6A84EB2AC9563D0 /* libRNTrackPlayer.a */,
+				10D43F529C864AB095195683 /* libRNSpotify.a */,
+				E8854A89F68C4822AAE30A2C /* libRNEventEmitter.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -776,6 +1090,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = F7JMC9N5Y9;
 						LastSwiftMigration = 1000;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -850,8 +1165,20 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
+					ProductGroup = B1A7FDAE2171821B0027B2FD /* Products */;
+					ProjectRef = 231C436E42C249C0B6B70D93 /* RNEventEmitter.xcodeproj */;
+				},
+				{
+					ProductGroup = B1A7FD4E217182170027B2FD /* Products */;
+					ProjectRef = 41B7835A036E44DEA2517B48 /* RNSpotify.xcodeproj */;
+				},
+				{
 					ProductGroup = B1B709842171794700D96536 /* Products */;
 					ProjectRef = C91533E352E4494887543978 /* RNTrackPlayer.xcodeproj */;
+				},
+				{
+					ProductGroup = B1A7FDB82171827F0027B2FD /* Products */;
+					ProjectRef = B1A7FDB72171827F0027B2FD /* Simple Track Playback.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1124,6 +1451,27 @@
 			remoteRef = ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		B1A7FD77217182170027B2FD /* libRNSpotify.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNSpotify.a;
+			remoteRef = B1A7FD76217182170027B2FD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B1A7FDB22171821B0027B2FD /* libRNEventEmitter.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNEventEmitter.a;
+			remoteRef = B1A7FDB12171821B0027B2FD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B1A7FE182171827F0027B2FD /* Simple Track Playback.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Simple Track Playback.app";
+			remoteRef = B1A7FE172171827F0027B2FD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		B1B709882171794700D96536 /* libRNTrackPlayer.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1273,6 +1621,22 @@
 			path = MusicSwiper;
 			sourceTree = "<group>";
 		};
+		B1A7FDBB2171827F0027B2FD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1A7FDBC2171827F0027B2FD /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B1A7FDC42171827F0027B2FD /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1A7FDC52171827F0027B2FD /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1288,12 +1652,16 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-track-player/ios/RNTrackPlayer/**",
+					"$(SRCROOT)/../node_modules/rn-spotify-sdk/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-events/ios",
 				);
 				INFOPLIST_FILE = MusicSwiperTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1315,12 +1683,16 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-track-player/ios/RNTrackPlayer/**",
+					"$(SRCROOT)/../node_modules/rn-spotify-sdk/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-events/ios",
 				);
 				INFOPLIST_FILE = MusicSwiperTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1340,9 +1712,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = F7JMC9N5Y9;
+				FRAMEWORK_SEARCH_PATHS = "../node_modules/rn-spotify-sdk/ios/external/SpotifySDK";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-track-player/ios/RNTrackPlayer/**",
+					"$(SRCROOT)/../node_modules/rn-spotify-sdk/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-events/ios",
 				);
 				INFOPLIST_FILE = MusicSwiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1366,9 +1742,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F7JMC9N5Y9;
+				FRAMEWORK_SEARCH_PATHS = "../node_modules/rn-spotify-sdk/ios/external/SpotifySDK";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-track-player/ios/RNTrackPlayer/**",
+					"$(SRCROOT)/../node_modules/rn-spotify-sdk/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-events/ios",
 				);
 				INFOPLIST_FILE = MusicSwiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1400,11 +1780,15 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-track-player/ios/RNTrackPlayer/**",
+					"$(SRCROOT)/../node_modules/rn-spotify-sdk/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-events/ios",
 				);
 				INFOPLIST_FILE = "MusicSwiper-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1434,11 +1818,15 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-track-player/ios/RNTrackPlayer/**",
+					"$(SRCROOT)/../node_modules/rn-spotify-sdk/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-events/ios",
 				);
 				INFOPLIST_FILE = "MusicSwiper-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1467,11 +1855,15 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-track-player/ios/RNTrackPlayer/**",
+					"$(SRCROOT)/../node_modules/rn-spotify-sdk/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-events/ios",
 				);
 				INFOPLIST_FILE = "MusicSwiper-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1500,11 +1892,15 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-track-player/ios/RNTrackPlayer/**",
+					"$(SRCROOT)/../node_modules/rn-spotify-sdk/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-events/ios",
 				);
 				INFOPLIST_FILE = "MusicSwiper-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (

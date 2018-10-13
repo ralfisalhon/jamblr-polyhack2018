@@ -18,6 +18,7 @@ import {
 } from "native-base";
 
 import TrackPlayer from 'react-native-track-player';
+import Spotify from 'rn-spotify-sdk';
 
 // Creates the player
 TrackPlayer.setupPlayer().then(async () => {
