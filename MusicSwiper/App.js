@@ -94,12 +94,20 @@ class SimpleDeck extends Component {
         });
     }
 
-    goToPlayer()
+    logIn()
 	{
-		Alert.alert("Logged in");
+		// Alert.alert("Logged in");
         this.setState({
             spotifyLoggedIn: true,
         });
+
+        Spotify.getMe().then((result) => {
+            Alert.alert("display_name", result.display_name)
+		}).catch((error) => {
+			Alert.alert("Error", error.message);
+		});
+
+        Alert.alert("accessToken", Spotify.getAuth().accessToken);
 	}
 
     componentDidMount()
@@ -112,7 +120,7 @@ class SimpleDeck extends Component {
 				"clientID":"67d0b41ce73546b0a57762f74017f107",
 				"sessionUserDefaultsKey":"SpotifySession",
 				"redirectURL":"http://music-swipe.herokuapp.com/",
-				"scopes":["user-read-private", "playlist-read", "playlist-read-private", "streaming"],
+				"scopes":["user-read-private", "playlist-read", "playlist-read-private", "streaming", "user-library-modify", "user-library-read"],
 			};
 			Spotify.initialize(spotifyOptions).then((loggedIn) => {
 				// update UI state
@@ -121,7 +129,7 @@ class SimpleDeck extends Component {
 				if(loggedIn)
 				{
 					// Alert.alert("Logged in to Spotify");
-                    this.goToPlayer();
+                    this.logIn();
 				}
 			}).catch((error) => {
 				Alert.alert("Error", error.message);
@@ -140,7 +148,7 @@ class SimpleDeck extends Component {
 			if(Spotify.isLoggedIn())
 			{
 				// Alert.alert("Logged in to Spotify");
-                this.goToPlayer();
+                this.logIn();
 			}
 		}
 	}
@@ -152,8 +160,7 @@ class SimpleDeck extends Component {
 			if(loggedIn)
 			{
 				// logged in
-				// Alert.alert("Logged in!");
-                this.goToPlayer();
+                this.logIn();
 
 			}
 			else
