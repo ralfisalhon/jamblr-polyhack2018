@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image, View, StyleSheet, StatusBar, Alert } from "react-native";
+import { Image, View, StyleSheet, StatusBar, Alert, ActivityIndicator, TouchableHighlight } from "react-native";
 import {
     Container,
     Header,
@@ -75,6 +75,7 @@ class SimpleDeck extends Component {
         this.state = {
             tab1: true,
             tab2: false,
+            spotifyLoggedIn: false,
         };
 
         this.state = {spotifyInitialized: false};
@@ -92,6 +93,14 @@ class SimpleDeck extends Component {
             tab2: true,
         });
     }
+
+    goToPlayer()
+	{
+		Alert.alert("Logged in");
+        this.setState({
+            spotifyLoggedIn: true,
+        });
+	}
 
     componentDidMount()
 	{
@@ -111,7 +120,8 @@ class SimpleDeck extends Component {
 				// handle initialization
 				if(loggedIn)
 				{
-					Alert.alert("Logged in to Spotify");
+					// Alert.alert("Logged in to Spotify");
+                    this.goToPlayer();
 				}
 			}).catch((error) => {
 				Alert.alert("Error", error.message);
@@ -129,7 +139,8 @@ class SimpleDeck extends Component {
 			// handle logged in
 			if(Spotify.isLoggedIn())
 			{
-				Alert.alert("Logged in to Spotify");
+				// Alert.alert("Logged in to Spotify");
+                this.goToPlayer();
 			}
 		}
 	}
@@ -141,7 +152,9 @@ class SimpleDeck extends Component {
 			if(loggedIn)
 			{
 				// logged in
-				Alert.alert("Logged in!");
+				// Alert.alert("Logged in!");
+                this.goToPlayer();
+
 			}
 			else
 			{
@@ -153,74 +166,142 @@ class SimpleDeck extends Component {
 		});
 	}
 
-    render() {
-        return (
-            <View style = {styles.container}>
-                <View style = {styles.header}>
-                <StatusBar barStyle= "light-content" />
-                    <View style = {{height: 16}}></View>
-                        <Text style = {styles.name}>
-                            Music Swiper
-                        </Text>
-                </View>
-                <View style = {styles.deckSwiper}>
-                    <DeckSwiper
-                    dataSource={cards}
-                    looping={false}
-                    onSwipeRight={item =>
-                        Alert.alert('swiped right', item.text)
-                    }
-                    onSwipeLeft={item =>
-                        Alert.alert('swiped left', item.text)
-                    }
-                    renderEmpty={() =>
-                        <View style = {styles.end}>
-                            <Text>End of cards</Text>
-                        </View>}
-                    renderItem={item =>
-                        <Card style={{ elevation: 3 }}>
-                        <CardItem>
-                            <Thumbnail source={item.image} />
-                            <View style = {{padding: 10}}>
-                                <Text>{item.name}</Text>
+    render()
+	{
+		if(!this.state.spotifyInitialized)
+		{
+			return (
+				<View style={styles.container}>
+					<ActivityIndicator animating={true}>
+					</ActivityIndicator>
+					<Text style={styles.loadMessage}>
+						Loading...
+					</Text>
+				</View>
+			);
+		}
+		else
+		{
+            {
+                if (this.state.spotifyLoggedIn)
+                {
+                    return (
+                        <View style = {styles.container2}>
+                            <View style = {styles.header}>
+                            <StatusBar barStyle= "light-content" />
+                                <View style = {{height: 16}}></View>
+                                    <Text style = {styles.name}>
+                                        Music Swiper
+                                    </Text>
                             </View>
-                        </CardItem>
-                        <CardItem cardBody>
-                            <Image style = {styles.image}
-                            source={item.image}
-                            />
-                        </CardItem>
-                        <CardItem style = {{justifyContent: 'center'}}>
-                            <Text> {item.text} </Text>
-                        </CardItem>
-                        </Card>}/>
-                        </View>
+                            <View style = {styles.deckSwiper}>
+                                <DeckSwiper
+                                dataSource={cards}
+                                looping={false}
+                                onSwipeRight={item =>
+                                    Alert.alert('swiped right', item.text)
+                                }
+                                onSwipeLeft={item =>
+                                    Alert.alert('swiped left', item.text)
+                                }
+                                renderEmpty={() =>
+                                    <View style = {styles.end}>
+                                        <Text>End of cards</Text>
+                                    </View>}
+                                renderItem={item =>
+                                    <Card style={{ elevation: 3 }}>
+                                    <CardItem>
+                                        <Thumbnail source={item.image} />
+                                        <View style = {{padding: 10}}>
+                                            <Text>{item.name}</Text>
+                                        </View>
+                                    </CardItem>
+                                    <CardItem cardBody>
+                                        <Image style = {styles.image}
+                                        source={item.image}
+                                        />
+                                    </CardItem>
+                                    <CardItem style = {{justifyContent: 'center'}}>
+                                        <Text> {item.text} </Text>
+                                    </CardItem>
+                                    </Card>}/>
+                                    </View>
 
-                    <Footer>
-                        <FooterTab>
-                        <Button active={this.state.tab1} onPress={() => this.toggleTab1()}>
-                            <Icon active={this.state.tab1} name="ios-musical-notes" />
-                            <Text>Swiper</Text>
-                        </Button>
-                        <Button active={this.state.tab2} onPress={() => this.toggleTab2()}>
-                            <Icon active={this.state.tab2} name="ios-list-box" />
-                            <Text>Results</Text>
-                        </Button>
-                        </FooterTab>
-                    </Footer>
-                </View>
-                );
+                                <Footer>
+                                    <FooterTab>
+                                    <Button active={this.state.tab1} onPress={() => this.toggleTab1()}>
+                                        <Icon active={this.state.tab1} name="ios-musical-notes" />
+                                        <Text>Swiper</Text>
+                                    </Button>
+                                    <Button active={this.state.tab2} onPress={() => this.toggleTab2()}>
+                                        <Icon active={this.state.tab2} name="ios-list-box" />
+                                        <Text>Results</Text>
+                                    </Button>
+                                    </FooterTab>
+                                </Footer>
+                            </View>
+        			);
+                }
+                else
+                {
+                    return (
+        				<View style={styles.container}>
+        					<Text style={styles.greeting}>
+        						Hey! You! Log into your spotify
+        					</Text>
+        					<TouchableHighlight onPress={this.spotifyLoginButtonWasPressed} style={styles.spotifyLoginButton}>
+        						<Text style={styles.spotifyLoginButtonText}>Log into Spotify</Text>
+        					</TouchableHighlight>
+        				</View>
+        			);
+                }
+
             }
-        }
+
+		}
+	}
+}
 
 export default SimpleDeck;
 
 const styles = StyleSheet.create({
     container: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: '#F5FCFF',
+	},
+    container2: {
         flex: 1,
         backgroundColor: '#3498db',
         justifyContent: 'space-between',
     },
+	loadMessage: {
+		fontSize: 20,
+		textAlign: 'center',
+		margin: 10,
+	},
+
+	spotifyLoginButton: {
+		justifyContent: 'center',
+		borderRadius: 18,
+		backgroundColor: 'green',
+		overflow: 'hidden',
+		width: 200,
+		height: 40,
+		margin: 20,
+	},
+	spotifyLoginButtonText: {
+		fontSize: 20,
+		textAlign: 'center',
+		color: 'white',
+	},
+
+	greeting: {
+		fontSize: 20,
+		textAlign: 'center',
+		margin: 10,
+	},
     end: {
         marginTop: 50,
         alignItems: 'center',
