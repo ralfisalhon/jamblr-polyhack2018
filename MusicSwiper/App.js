@@ -81,6 +81,8 @@ class SimpleDeck extends Component {
             cards: [],
         };
 
+        global.globalCurrently = 0;
+
         var self = this;
         this.getSongsFromGenres = this.getSongsFromGenres.bind(this);
 
@@ -133,7 +135,8 @@ class SimpleDeck extends Component {
             			id:          curr.id,
             			name:        curr.name,
             			preview_url: curr.preview_url,
-            			seconds:     (curr.duration_ms / 1000)
+            			seconds:     (curr.duration_ms / 1000),
+                        uri:         curr.uri,
             		};
                     if (temp.preview_url != null) {
                 		final.push(temp);
@@ -144,6 +147,7 @@ class SimpleDeck extends Component {
                 this.setState({
                     cards: final,
                 });
+                this.swiped();
                 console.log(this.state.cards);
         	}
         }
@@ -153,10 +157,6 @@ class SimpleDeck extends Component {
         xhr.setRequestHeader("Accept", "application/json");
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send();
-    }
-
-    test() {
-        Alert.alert("test");
     }
 
     logIn()
@@ -240,6 +240,15 @@ class SimpleDeck extends Component {
 		});
 	}
 
+    swiped()
+    {
+        //Alert.alert(this.state.cards[globalCurrently].uri);
+
+        Spotify.playURI(this.state.cards[globalCurrently].uri, 0, 0);
+
+        globalCurrently += 1;
+    }
+
     render()
 	{
 		if(!this.state.spotifyInitialized)
@@ -275,12 +284,14 @@ class SimpleDeck extends Component {
                                         <DeckSwiper
                                         dataSource={this.state.cards}
                                         looping={false}
-                                        // onSwipeRight={item =>
-                                        //     Alert.alert('swiped right', item.text)
-                                        // }
-                                        // onSwipeLeft={item =>
-                                        //     Alert.alert('swiped left', item.text)
-                                        // }
+                                        onSwipeRight={item =>
+                                            // Alert.alert('swiped right', item.text)
+                                            this.swiped()
+                                        }
+                                        onSwipeLeft={item =>
+                                            // Alert.alert('swiped left', item.text)
+                                            this.swiped()
+                                        }
                                         renderEmpty={() =>
                                             <View style = {styles.end}>
                                                 <Text>End of cards</Text>
