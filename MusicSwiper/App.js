@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image, View, StyleSheet, StatusBar } from "react-native";
+import { Image, View, StyleSheet, StatusBar, Alert } from "react-native";
 import {
     Container,
     Header,
@@ -23,13 +23,15 @@ import TrackPlayer from 'react-native-track-player';
 TrackPlayer.setupPlayer().then(async () => {
 
     // Adds a track to the queue
+    /*
     await TrackPlayer.add({
         id: 'trackId',
-        // url: 'https://puu.sh/BK6L9/29289ffa0a.mp3',
+        url: 'https://puu.sh/BK6L9/29289ffa0a.mp3',
         title: 'Track Title',
         artist: 'Track Artist',
         genre: 'Progressive House, Electro House',
     });
+    */
 
     // Starts playing it
     TrackPlayer.play();
@@ -101,6 +103,12 @@ class SimpleDeck extends Component {
                     <DeckSwiper
                     dataSource={cards}
                     looping={false}
+                    onSwipeRight={item =>
+                        Alert.alert('swiped right', item.text)
+                    }
+                    onSwipeLeft={item =>
+                        Alert.alert('swiped left', item.text)
+                    }
                     renderEmpty={() =>
                         <View style = {styles.end}>
                             <Text>End of cards</Text>
