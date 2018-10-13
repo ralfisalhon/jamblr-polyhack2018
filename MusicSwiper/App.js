@@ -49,23 +49,23 @@ const cards = [
 
 class SimpleDeck extends Component {
     constructor(props) {
-      super(props);
-      this.state = {
-        tab1: true,
-        tab2: false,
-      };
+        super(props);
+        this.state = {
+            tab1: true,
+            tab2: false,
+        };
     }
     toggleTab1() {
-      this.setState({
-        tab1: true,
-        tab2: false,
-      });
+        this.setState({
+            tab1: true,
+            tab2: false,
+        });
     }
     toggleTab2() {
-      this.setState({
-        tab1: false,
-        tab2: true,
-      });
+        this.setState({
+            tab1: false,
+            tab2: true,
+        });
     }
 
     render() {
@@ -95,13 +95,7 @@ class SimpleDeck extends Component {
                             </View>
                         </CardItem>
                         <CardItem cardBody>
-                            <Image
-                            style={{
-                                resizeMode: "cover",
-                                width: null,
-                                flex: 1,
-                                height: 300
-                            }}
+                            <Image style = {styles.image}
                             source={item.image}
                             />
                         </CardItem>
@@ -155,4 +149,10 @@ const styles = StyleSheet.create({
         flex: 1,
         margin: 10,
     },
+    image: {
+        resizeMode: "cover",
+        width: null,
+        flex: 1,
+        height: 300
+    }
 });
