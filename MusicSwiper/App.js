@@ -500,35 +500,35 @@ class SimpleDeck extends Component {
                                                 <Text>End of cards</Text>
                                             </View>}
                                         renderItem={item =>
-                                            <Card style={{ elevation: 3 }}>
-                                            <CardItem>
+                                            <View style = {{backgroundColor: 'white', borderRadius: 25, margin: 5}}>
+                                            <View style = {{flexDirection: 'row', margin: 10}}>
                                                 <Thumbnail source={{uri: item.image}} />
-                                                <View style = {{marginLeft: 10, marginRight: 50}}>
+                                                <View style = {{marginLeft: 10, marginRight: 50, marginTop: 10}}>
                                                     <Text>{item.name}</Text>
                                                     <Text note>{item.artists[0].name} </Text>
                                                 </View>
-                                            </CardItem>
-                                            <CardItem cardBody>
+                                            </View>
+                                            <View>
                                                 <Image style = {styles.image}
                                                 source={{uri: item.image}}
                                                 />
-                                            </CardItem>
-                                            </Card>}/>
+                                            </View>
+                                            </View>}/>
                                             </View>
                                         <View style = {{justifyContent: 'center', alignItems: 'center', marginBottom: 20, flexDirection: 'row'}}>
                                         <TouchableOpacity
-                                        style = {{height: 50, width: 100, backgroundColor: '#2980b9', justifyContent: 'center', alignItems: 'center', borderRadius: 50, borderWidth: 0.5, borderColor: 'black', marginHorizontal: 5}}
+                                        style = {{height: 50, width: 100, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', borderRadius: 50, borderWidth: 0.5, borderColor: 'black', marginHorizontal: 10}}
                                         onPress={() => this.refreshPressed()}>
                                             <Icon name="refresh" color="white" fontSize="50" />
                                         </TouchableOpacity>
                                         <TouchableOpacity
-                                        style = {{height: 50, width: 100, backgroundColor: '#2980b9', justifyContent: 'center', alignItems: 'center', borderRadius: 50, borderWidth: 0.5, borderColor: 'black', marginHorizontal: 5}}
+                                        style = {{height: 50, width: 100, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', borderRadius: 50, borderWidth: 0.5, borderColor: 'black', marginHorizontal: 10}}
                                         onPress={() => this.exportPressed()}>
                                             <Icon name="send" color="white" fontSize="50" />
                                         </TouchableOpacity>
                                         </View>
 
-                                        <Footer>
+                                        {/*<Footer>
                                             <FooterTab>
                                             <Button active={this.state.tab1} onPress={() => this.toggleTab1()}>
                                                 <Icon active={this.state.tab1} name="ios-musical-notes" />
@@ -539,7 +539,7 @@ class SimpleDeck extends Component {
                                                 <Text>Results</Text>
                                             </Button>
                                             </FooterTab>
-                                        </Footer>
+                                        </Footer>*/}
                                     </View>
                 			);
                         }
@@ -582,11 +582,11 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#F5FCFF',
+		backgroundColor: '#2b2929',
 	},
     container2: {
         flex: 1,
-        backgroundColor: '#3498db',
+        backgroundColor: '#3a3838',
         justifyContent: 'space-between',
     },
 	loadMessage: {
@@ -621,9 +621,11 @@ const styles = StyleSheet.create({
     },
     header: {
         height: 65,
-        backgroundColor: '#2980b9',
+        backgroundColor: '#0086ff',
         borderBottomWidth: 0,
         justifyContent: 'center',
+        borderBottomLeftRadius: 15,
+        borderBottomRightRadius: 15,
     },
     name: {
         textAlign: 'center',
@@ -638,6 +640,7 @@ const styles = StyleSheet.create({
         resizeMode: "cover",
         width: null,
         flex: 1,
-        height: 375
+        height: 425,
+        borderRadius: 25,
     }
 });
