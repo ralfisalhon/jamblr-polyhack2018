@@ -1,6 +1,6 @@
     shuffleCards = async (genres, access_token) => {
         var xhr = new XMLHttpRequest();
-        var query = "limit=25&;
+        var query = "limit=25&";
         if (this.state.rights.length == 0) {
             query += "seed_genres=";
 
