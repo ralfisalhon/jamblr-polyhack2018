@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image, View, StyleSheet, StatusBar, Alert, ActivityIndicator, TouchableHighlight } from "react-native";
+import { Image, View, StyleSheet, StatusBar, Alert, ActivityIndicator, TouchableHighlight, TouchableOpacity } from "react-native";
 import {
     Container,
     Header,
@@ -264,6 +264,22 @@ class SimpleDeck extends Component {
         globalCurrently += 1;
     }
 
+    refreshPressed()
+    {
+        TrackPlayer.reset();
+
+        // Adds a track to the queue
+        TrackPlayer.add({
+            id: 'trackId',
+            url: this.state.cards[globalCurrently - 1].preview_url,
+            title: 'Track Title',
+            artist: 'Track Artist',
+            genre: 'Progressive House, Electro House',
+        });
+
+        TrackPlayer.play();
+    }
+
     render()
 	{
 		if(!this.state.spotifyInitialized)
@@ -290,9 +306,9 @@ class SimpleDeck extends Component {
                                 <View style = {styles.container2}>
                                     <View style = {styles.header}>
                                     <StatusBar barStyle= "light-content" />
-                                        <View style = {{height: 16}}></View>
+                                        <View style = {{height: 20}}></View>
                                             <Text style = {styles.name}>
-                                                Music Swiper
+                                                Jamblr
                                             </Text>
                                     </View>
                                     <View style = {styles.deckSwiper}>
@@ -327,6 +343,13 @@ class SimpleDeck extends Component {
                                             </CardItem>
                                             </Card>}/>
                                             </View>
+                                        <View style = {{justifyContent: 'center', alignItems: 'center', marginBottom: 20}}>
+                                        <TouchableOpacity
+                                        style = {{height: 50, width: 100, backgroundColor: '#2980b9', justifyContent: 'center', alignItems: 'center', borderRadius: 50, borderWidth: 0.5, borderColor: 'black'}}
+                                        onPress={() => this.refreshPressed()}>
+                                            <Icon name="refresh" color="white" fontSize="50" />
+                                        </TouchableOpacity>
+                                        </View>
 
                                         <Footer>
                                             <FooterTab>
@@ -348,7 +371,7 @@ class SimpleDeck extends Component {
                             return (
                 				<View style={styles.container}>
                 					<Text style={styles.greeting}>
-                						Waiting for data
+                						Waiting for data...
                 					</Text>
                 				</View>
                 			);
@@ -420,14 +443,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     header: {
-        height: 60,
+        height: 65,
         backgroundColor: '#2980b9',
         borderBottomWidth: 0,
         justifyContent: 'center',
     },
     name: {
         textAlign: 'center',
-        fontSize: 24,
+        fontSize: 22,
         color: 'white',
     },
     deckSwiper: {
@@ -438,6 +461,6 @@ const styles = StyleSheet.create({
         resizeMode: "cover",
         width: null,
         flex: 1,
-        height: 300
+        height: 375
     }
 });
