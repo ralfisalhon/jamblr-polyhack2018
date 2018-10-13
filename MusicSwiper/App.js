@@ -17,6 +17,25 @@ import {
     Content,
 } from "native-base";
 
+import TrackPlayer from 'react-native-track-player';
+
+// Creates the player
+TrackPlayer.setupPlayer().then(async () => {
+
+    // Adds a track to the queue
+    await TrackPlayer.add({
+        id: 'trackId',
+        // url: 'https://puu.sh/BK6L9/29289ffa0a.mp3',
+        title: 'Track Title',
+        artist: 'Track Artist',
+        genre: 'Progressive House, Electro House',
+    });
+
+    // Starts playing it
+    TrackPlayer.play();
+
+});
+
 var images = [
     require('./assets/swiper-1.png'),
     require('./assets/swiper-2.png'),
