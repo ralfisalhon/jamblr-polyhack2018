@@ -19,6 +19,8 @@ import {
 
 global.globalData = "";
 
+console.disableYellowBox = true;
+
 import TrackPlayer from 'react-native-track-player';
 import Spotify from 'rn-spotify-sdk';
 
@@ -48,28 +50,28 @@ var images = [
     require('./assets/swiper-4.png')
 ];
 
-const cards = [
-    {
-        text: "Card One",
-        name: "Song Name One",
-        image: images[0]
-    },
-    {
-        text: "Card Two",
-        name: "Song Name Two",
-        image: images[1]
-    },
-    {
-        text: "Card Three",
-        name: "Song Name Three",
-        image: images[2]
-    },
-    {
-        text: "Card Four",
-        name: "Song Name Four",
-        image: images[3]
-    }
-];
+// const cards = [
+//     {
+//         text: "Card One",
+//         name: "Song Name One",
+//         image: images[0]
+//     },
+//     {
+//         text: "Card Two",
+//         name: "Song Name Two",
+//         image: images[1]
+//     },
+//     {
+//         text: "Card Three",
+//         name: "Song Name Three",
+//         image: images[2]
+//     },
+//     {
+//         text: "Card Four",
+//         name: "Song Name Four",
+//         image: images[3]
+//     }
+// ];
 
 class SimpleDeck extends Component {
     constructor(props) {
@@ -244,7 +246,20 @@ class SimpleDeck extends Component {
     {
         //Alert.alert(this.state.cards[globalCurrently].uri);
 
-        Spotify.playURI(this.state.cards[globalCurrently].uri, 0, 0);
+        // Spotify.playURI(this.state.cards[globalCurrently].uri, 0, 0);
+
+        TrackPlayer.reset();
+
+        // Adds a track to the queue
+        TrackPlayer.add({
+            id: 'trackId',
+            url: this.state.cards[globalCurrently].preview_url,
+            title: 'Track Title',
+            artist: 'Track Artist',
+            genre: 'Progressive House, Electro House',
+        });
+
+        TrackPlayer.play();
 
         globalCurrently += 1;
     }
