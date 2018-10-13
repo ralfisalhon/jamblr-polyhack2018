@@ -43,36 +43,6 @@ TrackPlayer.setupPlayer().then(async () => {
 
 });
 
-var images = [
-    require('./assets/swiper-1.png'),
-    require('./assets/swiper-2.png'),
-    require('./assets/swiper-3.png'),
-    require('./assets/swiper-4.png')
-];
-
-// const cards = [
-//     {
-//         text: "Card One",
-//         name: "Song Name One",
-//         image: images[0]
-//     },
-//     {
-//         text: "Card Two",
-//         name: "Song Name Two",
-//         image: images[1]
-//     },
-//     {
-//         text: "Card Three",
-//         name: "Song Name Three",
-//         image: images[2]
-//     },
-//     {
-//         text: "Card Four",
-//         name: "Song Name Four",
-//         image: images[3]
-//     }
-// ];
-
 class SimpleDeck extends Component {
     constructor(props) {
         super(props);
@@ -144,22 +114,26 @@ class SimpleDeck extends Component {
             		// 	Alert.alert("Error", error.message);
             		// });
 
-
-            		var temp = {
-            			artists:     curr.artists,
-                        image:       curr.album.images[0].url,
-            			id:          curr.id,
-            			name:        curr.name,
-            			preview_url: curr.preview_url,
-            			seconds:     (curr.duration_ms / 1000),
-                        uri:         curr.uri,
-                        artistIm:    globalArtistIm,
-            		};
-                    if (temp.preview_url != null) {
-                		final.push(temp);
+                    console.log("HERE", curr.album.images);
+                    if (curr.album.images != undefined){
+                		var temp = {
+                			artists:     curr.artists,
+                            image:       curr.album.images[0].url,
+                			id:          curr.id,
+                			name:        curr.name,
+                			preview_url: curr.preview_url,
+                			seconds:     (curr.duration_ms / 1000),
+                            uri:         curr.uri,
+                            artistIm:    globalArtistIm,
+                		};
+                        if (temp.preview_url != null) {
+                    		final.push(temp);
+                        }
                     }
             	}
 
+                final.push(temp);
+                final.push(temp);
                 // console.log(final);
                 this.setState({
                     cards: final,
@@ -191,20 +165,20 @@ class SimpleDeck extends Component {
 
         console.log("accessToken", Spotify.getAuth().accessToken);
 
-        this.getSongsFromGenres(["hip-hop"], Spotify.getAuth().accessToken)
+        this.getSongsFromGenres(["pop", "alternative", "rap", "metal", "jazz"], Spotify.getAuth().accessToken)
 	}
 
     shuffleCards = async (genres, access_token) => {
         // Alert.alert("In shuffleCards");
         var xhr = new XMLHttpRequest();
-        var query = "limit=25&";
+        var query = "limit=20&";
         if (this.rights.length == 0) {
             // Alert.alert("Length 0");
             query += "seed_genres=";
 
             for (var i = 0; i < genres.length; i++) {
                 if (i != 0)
-                    query += ", ";
+                    query += ",";
                 query += genres[i];
             }
         } else if (this.rights.length <= 5) {
@@ -213,7 +187,7 @@ class SimpleDeck extends Component {
 
             for (var i = 0; i < this.rights.length; i++) {
                 if (i != 0)
-                    query += ", ";
+                    query += ",";
                 query += this.rights[i].id;
             }
         } else {
@@ -227,8 +201,8 @@ class SimpleDeck extends Component {
                 arr[i] = arr[x];
                 arr[x] = y;
             }
-            query += (arr[0].id + ", " + arr[1].id + ", " + arr[2].id + ", " +
-                      arr[3].id + ", " + arr[4].id);
+            query += (arr[0].id + "," + arr[1].id + "," + arr[2].id + "," +
+                      arr[3].id + "," + arr[4].id);
         }
 
         // Alert.alert(query);
@@ -238,7 +212,7 @@ class SimpleDeck extends Component {
                 return;
             }
             if (xhr.status == 200) {
-                Alert.alert("Response received");
+                // Alert.alert("Response received");
                 var data = xhr.responseText;
 
                 var obj = JSON.parse(data.replace(/\r?\n|\r/g, ''));
@@ -246,29 +220,44 @@ class SimpleDeck extends Component {
 
                 for (var i = 0; i < obj.tracks.length; i++) {
                     var curr = obj.tracks[i];
-                    var temp = {
-                        artists:     curr.artists,
-                        image:       curr.album.images[0].url,
-                        id:          curr.id,
-                        name:        curr.name,
-                        preview_url: curr.preview_url,
-                        seconds:     (curr.duration_ms / 1000),
-                        uri:         curr.uri,
-                    };
-                    if (temp.preview_url != null) {
-                        final.push(temp);
+
+                    console.log("HERE", curr.album.images);
+                    if (curr.album.images != undefined) {
+                        var temp = {
+                            artists:     curr.artists,
+                            image:       curr.album.images[0].url,
+                            id:          curr.id,
+                            name:        curr.name,
+                            preview_url: curr.preview_url,
+                            seconds:     (curr.duration_ms / 1000),
+                            uri:         curr.uri,
+                        };
+                        if (temp.preview_url != null) {
+                            final.push(temp);
+                        }
                     }
                 }
 
-                // console.log(final);
+                // Alert.alert(final.length.toString());
+
+                var temp = []
+                // temp.push(this.state.cards[this.state.cards.length-1]);
+                temp.push(final);
+
                 this.setState({
                     cards: final,
                 });
+
+                this.rights = [];
+                globalCurrently = 0;
+                this.swiped("left");
+
                 // this.swiped("left");
                 // console.log(this.state.cards);
             }
         }
-
+        console.log("QUERY:", query);
+        console.log("TOKEN:", access_token);
         xhr.open("GET", "https://api.spotify.com/v1/recommendations?" + query);
         xhr.setRequestHeader("Authorization", "Bearer " + access_token);
         xhr.setRequestHeader("Accept", "application/json");
@@ -362,13 +351,13 @@ class SimpleDeck extends Component {
 
         TrackPlayer.play();
 
-        // Alert.alert(this.state.cards.length.toString(), globalCurrently.toString());
-        if (this.state.cards.length <= globalCurrently + 2) {
-            // Alert.alert("Here");
-            this.shuffleCards("[hip-hop]", Spotify.getAuth().accessToken)
-        }
-
         globalCurrently += 1;
+
+        // Alert.alert(this.state.cards.length.toString(), globalCurrently.toString());
+        if (this.state.cards.length <= globalCurrently + 3) {
+            //Alert.alert("Here");
+            this.shuffleCards(["pop", "alternative", "rap", "metal", "jazz"], Spotify.getAuth().accessToken)
+        }
     }
 
     refreshPressed()
@@ -407,7 +396,7 @@ class SimpleDeck extends Component {
                 if (this.state.spotifyLoggedIn)
                 {
                     {
-                        if (this.state.cards && this.state.cards.length > 0)
+                        if (this.state.cards && this.state.cards.length > 1)
                         {
                             return (
                                 <View style = {styles.container2}>
