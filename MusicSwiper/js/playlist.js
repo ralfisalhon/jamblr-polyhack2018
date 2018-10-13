@@ -41,11 +41,15 @@
         }
 
         /* Grab the first 100 elements. */
-        var data = this.state.rights.slice(0, 100);
+        var data   = this.state.rights.slice(0, 100);
+        var tracks = [];
+        for (var i = 0; i < data.length; i++) {
+            tracks.push(data[i].uri);
+        }
 
         xhr.open("POST", "https://api.spotify.com/v1/playlists/" + playlist_id +
                          "/tracks");
         xhr.setRequestHeader("Authorization", "Bearer " + access_token);
         xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(JSON.stringify(data));
+        xhr.send(JSON.stringify(tracks));
     }
