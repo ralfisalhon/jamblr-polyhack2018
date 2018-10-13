@@ -84,7 +84,7 @@ class SimpleDeck extends Component {
     }
     getSongsFromGenres = async (genres, access_token) => {
         var xhr = new XMLHttpRequest();
-        var query = "limit=20&seed_genres=";
+        var query = "limit=25&seed_genres=";
 
         for (var i = 0; i < genres.length; i++) {
             if (i != 0)
@@ -174,7 +174,7 @@ class SimpleDeck extends Component {
     shuffleCards = async (genres, access_token) => {
         // Alert.alert("In shuffleCards");
         var xhr = new XMLHttpRequest();
-        var query = "limit=20&";
+        var query = "limit=25&";
         if (this.rights.length == 0) {
             // Alert.alert("Length 0");
             query += "seed_genres=";
@@ -401,7 +401,7 @@ class SimpleDeck extends Component {
             }
             if (xhr.readyState == 4 && xhr.status == 201) {
                 console.log("MADE IT HERE");
-                Alert.alert("Playlist created!");
+                // Alert.alert("Playlist created!");
                 var data = xhr.responseText;
                 var obj = JSON.parse(data.replace(/\r?\n|\r/g, ''));
 
@@ -516,16 +516,16 @@ class SimpleDeck extends Component {
                                             </View>
                                             </View>}/>
                                             </View>
-                                        <View style = {{justifyContent: 'center', alignItems: 'center', marginBottom: 20, flexDirection: 'row'}}>
+                                        <View style = {{justifyContent: 'center', alignItems: 'center', marginVertical: 15, flexDirection: 'row'}}>
                                         <TouchableOpacity
                                         style = {{height: 50, width: 100, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', borderRadius: 50, borderWidth: 0.5, borderColor: 'black', marginHorizontal: 10}}
                                         onPress={() => this.refreshPressed()}>
-                                            <Icon name="refresh" color="white" fontSize="50" />
+                                            <Icon name="refresh" style={{fontSize: 40, color: '#0086ff', marginTop: 5}}/>
                                         </TouchableOpacity>
                                         <TouchableOpacity
                                         style = {{height: 50, width: 100, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', borderRadius: 50, borderWidth: 0.5, borderColor: 'black', marginHorizontal: 10}}
                                         onPress={() => this.exportPressed()}>
-                                            <Icon name="send" color="white" fontSize="50" />
+                                            <Icon name="send" style={{fontSize: 40, color: '#0086ff', marginTop: 5}}/>
                                         </TouchableOpacity>
                                         </View>
 
@@ -615,6 +615,7 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		textAlign: 'center',
 		margin: 10,
+        color: 'white',
 	},
     end: {
         marginTop: 50,
